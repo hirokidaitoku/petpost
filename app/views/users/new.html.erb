@@ -27,8 +27,10 @@
         <%= f.password_field :password_confirmation, class: 'form-control' %>
       </div>
     
-      <%= f.submit '会員登録する', class: 'btn btn-success btn-block' %>
+      <%= f.submit '会員登録する', class: 'btn btn-success btn-block mb-2' %>
     <% end %>
+    
+    <P>登録済みの方はこちら <%= link_to "ログインページへ", login_path %></P>
   </div>
     
 </div>

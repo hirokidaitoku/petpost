@@ -1,10 +1,14 @@
-<div class="center jumbotron">
-  <div class="text-center">
-    <h1><font color="blue">PETPOST</font></h1>
-    <h2>みんなのペットを共有しよう！</h2>
+<% if logged_in? %>
+  <%= current_user.name %>
+<% else %>
+  <div class="center jumbotron">
+    <div class="text-center">
+      <h1><font color="blue">PETPOST</font></h1>
+      <h2>みんなのペットを共有しよう！</h2>
+    </div>
   </div>
-</div>
-<div class="row">
-  <%= link_to "会員登録", signup_path, class: "btn btn-success offset-3 col-sm-2" %>
-  <a href="#" class="btn btn-success offset-2 col-sm-2">ログイン</a>
-</div>
+  <div class="row">
+    <%= link_to "会員登録", signup_path, class: "btn btn-success offset-3 col-sm-2" %>
+    <%= link_to "ログイン", login_path, class: "btn btn-success offset-2 col-sm-2" %>
+  </div>
+<% end %>
