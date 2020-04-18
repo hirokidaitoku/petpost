@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  get 'mypets/new'
+  get 'mypets/create'
+  get 'mypets/edit'
+  get 'mypets/update'
+  get 'mypets/destroy'
   get 'sessions/new'
   get 'sessions/create'
   get 'sessions/destroy'
@@ -15,4 +20,7 @@ Rails.application.routes.draw do
   
   get "signup", to: "users#new"
   resources :users, only: [:index, :show, :new, :create]
+  
+  get "petsignup", to: "mypets#new"
+  resources :mypets, only: [:new, :create, :edit, :update, :destroy]
 end
