@@ -8,6 +8,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @mypets = current_user.mypets.order(id: :desc).page(params[:id])
+    counts(@user)
   end
 
   def new
@@ -24,6 +25,18 @@ class UsersController < ApplicationController
       flash.now[:danger] = "会員登録に失敗しました。"
       render :new
     end
+  end
+  
+  def followings
+    @user = User.find(params[:id])
+    @followings = @user.followings.page(params[:page])
+    counts(@user)
+  end
+  
+  def followers
+    @user = User.find(params[:id])
+    @followers = @user.followers.page(params[:page])
+    counts(@user)
   end
   
   private

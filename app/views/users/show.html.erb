@@ -1,13 +1,14 @@
 <div class="row">
-  <aside class="col-sm-4">
+  <aside class="col-sm-3">
     <div class="card">
       <div class="card-header">
         <h3 class="card-title text-center"><%= @user.name %></h3>
       </div>
       <div class="card-body">
-        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 500 }) %>" alt="">
+        <img class="rounded img-fluid" src="<%= gravatar_url(@user, { size: 200 }) %>" alt="">
       </div>
     </div>
+  <%= render "relationships/follow_button", user: @user %>
   <nav class="navbar navbar-expand-sm navbar-light bg-light">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
       <span class="navbar-toggler-icon"></span>
@@ -20,11 +21,13 @@
             <li class="dropdown-diviver"></li>
             <li class="dropdown-item">お気に入り</li>
             <li class="dropdown-diviver"></li>
-            <li class="dropdown-item">フォロー</li>
+            <li class="dropdown-item">フォロー <span class="badge badge-secondary"><%= @count_followings %></span></li>
             <li class="dropdown-diviver"></li>
-            <li class="dropdown-item">フォロワー</li>
+            <li class="dropdown-item">フォロワー <span class="badge badge-secondary"><%= @count_followers %></span></li>
             <li class="dropdown-diviver"></li>
-            <li class="dropdown-item">投稿する</li>
+            <% if current_user == @user %>
+              <li class="dropdown-item">投稿する</li>
+            <% end %>
           </ul>
         </li>
       </ul>
@@ -33,7 +36,7 @@
   </aside>
   <div class="col-sm-8">
     <ul class="nav nav-tabs nav-justified mb-3">
-      <li class="nav-item"><a href="#" class="nav-link">マイペット</a></li>
+      <li class="nav-item"><a href="#" class="nav-link <%= 'active' if current_page?(user_path(@user)) %>">マイペット <span class="badge badge-secondary"><%= @count_mypets %></span></a></li>
       <li class="nav-item"><a href="#" class="nav-link">投稿</a></li>
     </ul>
     <%= render "mypets", mypets: @mypets %>

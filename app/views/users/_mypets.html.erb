@@ -1,20 +1,20 @@
 <% if mypets.any? %>
   <ul class="list-unstyled">
     <% mypets.each do |mypet| %>
-      <li class="media">
+      <li class="media" style="border:1px solid #fff000; border-radius:5px;padding:5px;">
         <div class="media-body">
           <div>
-            <p>名前:<%= mypet.petname %></p>
-            <p>年齢:<%= mypet.age %></p>
+            <p>名前: <%= mypet.petname %></p>
+            <p>年齢: <%= mypet.age %></p>
           </div>
           <div>
-            <p>PRコメント:<%= mypet.description %></p>
+            <p>特徴: <%= mypet.description %></p>
           </div>
         </div>
         <% if @user == current_user %>
-          <div class="btn-group">
-            <%= link_to "編集する" , edit_mypet_path(mypet), class:"btn btn-success"%>
-            <%= link_to "削除する" , mypet , method: :delete ,data: { confirm: '本当に削除してよろしいですか？' },class:"btn btn-danger"%>
+          <div class=>
+            <%= link_to "編集する" , edit_mypet_path(mypet), class:"btn btn-success btn-block"%>
+            <%= link_to "削除する" , mypet , method: :delete ,data: { confirm: '本当に削除してよろしいですか？' },class:"btn btn-danger btn-block"%>
           </div>
         <% end %>
       </li>
@@ -22,5 +22,5 @@
   </ul>
 <% end %> 
 <% if @user == current_user %>
-  <%= link_to "ペットを登録する", petsignup_path , class: "btn btn-block btn-primary col-sm-4" %>
+  <%= link_to "ペットを登録する", petsignup_path , class: "btn btn-block btn-primary col-sm-3" %>
 <% end %>
