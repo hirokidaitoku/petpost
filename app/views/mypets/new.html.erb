@@ -8,18 +8,23 @@
       <%= render "layouts/error_messages", model: f.object %>
       
       <div class="form-group">
-        <%= f.label :petname, '名前' %>
-        <%= f.text_field :petname, class: 'form-control' %>
+        <%= f.label :petname, '名前(50字以下)' %>
+        <%= f.text_area :petname, class: 'form-control',rows:2 %>
       </div>
 
       <div class="form-group">
-        <%= f.label :age, '年齢' %>
-        <%= f.text_field :age, class: 'form-control' %>
+        <%= f.label :age, '年齢(半角数字で入力してください)' %>
+        <%= f.text_field :age, class: 'form-control col-sm-1' %>
       </div>
 
       <div class="form-group">
-        <%= f.label :description, 'PR' %>
-        <%= f.text_field :description, class: 'form-control' %>
+        <%= f.label :description, '特徴(200字以下)' %>
+        <%= f.text_area :description, class: 'form-control',rows:5 %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :petimage, "ペットの写真" %>
+        <%= f.file_field :petimage, class:"form-control" %>
       </div>
     
       <%= f.submit '登録する', class: 'btn btn-success btn-block mb-2' %>

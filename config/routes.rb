@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'likes/create'
+  get 'likes/destroy'
+  get 'posts/create'
+  get 'posts/destroy'
   get 'relationships/create'
   get 'relationships/destroy'
   get 'mypets/new'
@@ -25,6 +29,8 @@ Rails.application.routes.draw do
     member do
       get :followings
       get :followers
+      get :posts
+      get :favorites
     end
   end
   
@@ -33,4 +39,8 @@ Rails.application.routes.draw do
   resources :mypets, only: [:new, :create, :edit, :update, :destroy]
   
   resources :relationships, only: [:create, :destroy]
+  
+  resources :posts, only: [:create, :destroy]
+  
+  resources :likes, only: [:create, :destroy]
 end
