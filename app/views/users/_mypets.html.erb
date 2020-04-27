@@ -1,7 +1,7 @@
 <% if mypets.any? %>
   <ul class="list-unstyled">
     <% mypets.each do |mypet| %>
-      <li class="media" style="border:1px solid #fff000; border-radius:5px;padding:5px;">
+      <li class="media mb-1" style="border:1px solid #fff000; border-radius:5px; padding:5px;">
         <div class="media-body">
           <div>
             <p style="font-size:20px; margin:1px;">名前: <%= mypet.petname %></p>

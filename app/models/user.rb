@@ -45,4 +45,12 @@ class User < ApplicationRecord
   def favorite?(user_post)
     self.favorites.include?(user_post)
   end
+  
+  def self.search(search)
+    if search
+      User.where(["name LIKE ?", "%#{search}%"])
+    else
+      User.all
+    end
+  end
 end

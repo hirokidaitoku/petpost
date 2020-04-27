@@ -11,8 +11,11 @@
         </div>
         <%= f.submit '投稿する', class: 'btn btn-primary btn-block' %>
       <% end %>
+      <div class="mt-5">
+        <%= render "posts/search" %>
+      </div>
     </aside>
-    <div class="col-sm-７">
+    <div class="offset-1 col-sm-6">
       <%= render 'posts/posts', posts: @posts %>
     </div>
   </div>

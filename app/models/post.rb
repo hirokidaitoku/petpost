@@ -1,11 +1,26 @@
 class Post < ApplicationRecord
   belongs_to :user
   
-  validates :content, presence: true, length: { maximum: 200 }
+  validates :content, length: { maximum: 200 }
+  validates :content_or_image, presence: true
+  
   
   mount_uploader :image, ImageUploader
   
-  has_many :reverses_of_like, class_name: "Like"
-  has_many :liked_user, through: :reverses_of_like, source: :user
+  has_many :likes
+  has_many :liked_users, through: :likes, source: :user
+  
+  def self.search(search)
+    if search
+      Post.where(["content LIKE ?", "%#{search}%"])
+    else
+      Post.all
+    end
+  end
+  
+  private
+  def content_or_image
+    content.presence or image.presence
+  end
   
 end

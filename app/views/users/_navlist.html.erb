@@ -1,0 +1,11 @@
+<table class="table table-bordered">
+  <tr>
+    <td class="text-center"><a href="<%= favorites_user_path(@user) %>">お気に入り<span class="badge badge-secondary"><%= @count_favorites %></span></a></td>
+  </tr>
+  <tr>
+    <td class="text-center"><a href="<%= followings_user_path(@user) %>">フォロー<span class="badge badge-secondary"><%= @count_followings %></span></a></td>
+  </tr>
+  <tr>
+    <td class="text-center"><a href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></td>
+  </tr>
+</table>

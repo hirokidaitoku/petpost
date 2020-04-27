@@ -4,21 +4,22 @@
     <img class="mr-2 rounded" src="<%= gravatar_url(post.user,{ size: 60 }) %>" alt="">
     <div class="media-body">
       <div>
-        <%= link_to post.user.name, user_path(post.user) %><span class="text-muted"> posted at <%= post.created_at %></span>
+        <%= link_to post.user.name, user_path(post.user) %><span class="text-muted"> 投稿日 <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
       </div>
       <div>
-        <p class="mb-0"><%= post.content %></p>
+        <p class="mb-2"><%= post.content %></p>
       </div>
       <div>
       <% if post.image.present? %>
-        <img src="<%= post.image %>" width="100">
+        <img src="<%= post.image %>" width="100" , class="mb-2">
       <% end %>
       </div>
+      <p class="m-0">お気に入り件数:<span class="badge"><%= post.likes.count %></span></p>
       <div class="btn-group">
         <% if current_user == post.user %>
-          <%= link_to "削除する", post, method: :delete, data: {confirm: "You sure?" }, class: 'btn btn-danger btn-block' %>
+          <%= link_to "削除する", post, method: :delete, data: {confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
         <% end %>
-        <%= render "likes/favorite_button", post: post  %>
+        <%= render "likes/favorite_button", post: post %>
       </div>
     </div>
   </li>

@@ -1,0 +1,8 @@
+<p>検索</p>
+<%= form_tag users_path, :method => "get" do %>
+  <%= text_field_tag :search %>
+  <%= submit_tag "検索", :name => nil %>
+<% end %>
+<div class="mt-1">
+  <button><%= link_to "一覧に戻る", users_path %></button>
+</div>

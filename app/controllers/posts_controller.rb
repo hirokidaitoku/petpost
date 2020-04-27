@@ -20,6 +20,12 @@ class PostsController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
   
+  def liked_users
+    @post = Post.find(params[:id])
+    @liked_users = @post.liked_users.page(params[:page])
+    counts(@post)
+  end
+  
   private
   
   def post_params

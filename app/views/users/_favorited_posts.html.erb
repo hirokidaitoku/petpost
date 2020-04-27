@@ -5,15 +5,17 @@
       <img class="mr-2 rounded" src="<%= gravatar_url(favorite.user, { size: 50 }) %>" alt="">
       <div class="media-body">
         <div>
-          <%= link_to favorite.user.name, user_path(favorite.user) %><span class="text-muted"> posted at <%= favorite.created_at %></span>
+          <%= link_to favorite.user.name, user_path(favorite.user) %><span class="text-muted"> 投稿日 <%= favorite.created_at.strftime("%Y-%m-%d %H:%M") %></span>
         </div>
         <div>
           <%= favorite.content %>
         </div>
-        <div>
-          <%= favorite.image %>
-        </div>
-        <div>
+        <% if favorite.image.present? %>
+          <div>
+            <img src="<%= favorite.image %>" >
+          </div>
+        <% end %>
+        <div class="mt-1">
           <%= render "likes/favorite_button", post: favorite %>
         </div>
       </div>

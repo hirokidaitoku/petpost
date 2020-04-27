@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :require_user_logged_in, only: [:index, :show]
   
   def index
-    @users = User.order(id: :desc).page(params[:page]).per(30)
+    @users = User.order(id: :desc).page(params[:page]).per(30).search(params[:search])
+    @user = current_user
   end
 
   def show
