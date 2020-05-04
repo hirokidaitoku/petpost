@@ -10,13 +10,13 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
   
-  def self.search(search)
-    if search
-      Post.where(["content LIKE ?", "%#{search}%"])
-    else
-      Post.all
-    end
-  end
+#  def self.search(search)
+#   if search
+#      Post.where(["content LIKE ?", "%#{search}%"])
+#    else
+#      Post.all
+#    end
+#  end
   
   private
   def content_or_image
