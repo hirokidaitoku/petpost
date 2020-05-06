@@ -1,29 +1,31 @@
+<% if posts.any? %>
 <ul class="list-unstyled">
-<% posts.each do |post| %>
-  <li class="media mb-3">
-    <img class="mr-2 rounded" src="<%= gravatar_url(post.user,{ size: 60 }) %>" alt="">
-    <div class="media-body">
-      <div>
-        <%= link_to post.user.name, user_path(post.user) %><span class="text-muted"> 投稿日 <%= post.created_at.strftime("%Y-%m-%d %H:%M") %></span>
-      </div>
-      <div>
-        <p class="mb-2"><%= post.content %></p>
-      </div>
-      <div>
-      <% if post.image.present? %>
-        <img src="<%= post.image %>" width="100" , class="mb-2">
-      <% end %>
-      </div>
-      <p class="m-0">お気に入り件数:<span class="badge"><%= post.likes.count %></span></p>
-      <div class="btn-group">
-        <% if current_user == post.user %>
-          <%= link_to "削除する", post, method: :delete, data: {confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+  <% posts.each do |post| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(post.user,{ size: 60 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to post.user.name, user_path(post.user) %><span class="text-muted"> 投稿日 <%= post.created_at.strftime("%Y-%m-%d") %></span>
+        </div>
+        <div>
+          <p class="mb-2"><%= post.content %></p>
+        </div>
+        <div>
+        <% if post.image.present? %>
+          <img src="<%= post.image %>" width="100" , class="mb-2">
         <% end %>
-        <%= render "likes/favorite_button", post: post %>
+        </div>
+        <p class="m-0">お気に入り件数:<span class="badge"><%= post.likes.count %></span></p>
+        <div class="btn-group">
+          <% if current_user == post.user %>
+            <%= link_to "削除する", post, method: :delete, data: {confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+          <%= render "likes/favorite_button", post: post %>
+        </div>
       </div>
-    </div>
-  </li>
-<% end %>
+    </li>
+  <% end %>
 
-<%= paginate posts %>
+  <%= paginate posts %>
 </ul>
+<% end %>

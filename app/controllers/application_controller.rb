@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
   
   def counts(user)
-    @count_mypets = user.mypets.count
+    @count_mypets = user.mypets.count if user.mypets.present?
     @count_followings = user.followings.count
     @count_followers = user.followers.count
     @count_posts = user.posts.count
