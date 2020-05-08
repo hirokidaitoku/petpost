@@ -19,7 +19,8 @@ default: &default
 
 development:
   <<: *default
-  database: petpost_development
+#  database: petpost_development
+  database: petpost_development_temporary
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
