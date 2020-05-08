@@ -19,7 +19,7 @@ class ToppagesController < ApplicationController
       @posts = Post.
         where("COALESCE(content, '') like ?", "%#{params[:search_content].to_s}%").
         where("COALESCE(image, '') like ?", "%#{params[:search_image].to_s}%").
-        where("created_at like ?", "%#{params[:search_created_at]}%").
+        where("COALESCE(created_at, '') like ?", "%#{params[:search_created_at]}%").
         page(params[:page]).per(25)
     end
 #binding.pry
