@@ -10,17 +10,16 @@ class Post < ApplicationRecord
   has_many :likes
   has_many :liked_users, through: :likes, source: :user
   
-#  def self.search(search)
-#   if search
-#      Post.where(["content LIKE ?", "%#{search}%"])
-#    else
-#      Post.all
-#    end
-#  end
   
   private
   def content_or_image
     content.presence or image.presence
+  end
+  
+  def date
+    if created_at.value = NULL ; 0
+    else created_at.value 
+    end
   end
   
 end

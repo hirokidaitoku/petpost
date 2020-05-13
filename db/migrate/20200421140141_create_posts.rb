@@ -5,7 +5,7 @@ class CreatePosts < ActiveRecord::Migration[5.2]
       t.string :image
       t.references :user, foreign_key: true
 
-      t.timestamps
+      t.timestamps 
     end
   end
 end
