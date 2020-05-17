@@ -3,16 +3,14 @@
     <% mypets.each do |mypet| %>
       <li class="media mb-1" style="border:1px solid #fff000; border-radius:5px; padding:5px;">
         <div class="media-body">
-          <div>
-            <p style="font-size:20px; margin:1px;">名前: <%= mypet.petname %></p>
-            <p style="font-size:18px; margin:1px;">年齢: <%= mypet.age %></p>
-            <% if mypet.petimage.present? %>
-              <img src="<%= mypet.petimage %>" width="100">
-            <% else %>
-              <p style="margin:2px;">※ペットの画像が未登録です</p>
-            <% end %>
-            <p style="font-size:18px; margin:1px;">特徴: <%= mypet.description %></p>
-          </div>
+          <p style="font-size:20px; margin:1px;">名前: <%= mypet.petname %></p>
+          <p style="font-size:18px; margin:1px;">年齢: <%= mypet.age %></p>
+          <% if mypet.petimage.present? %>
+            <img src="<%= mypet.petimage %>" width="100">
+          <% else %>
+            <p style="margin:2px;">※ペットの画像が未登録です</p>
+          <% end %>
+          <p style="font-size:18px; margin:1px;">特徴: <%= mypet.description %></p>
         </div>
         <% if @user == current_user %>
           <div>
