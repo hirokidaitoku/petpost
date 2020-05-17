@@ -33,17 +33,17 @@ class User < ApplicationRecord
     self.followings.include?(other_user)
   end
   
-  def favorite(user_post)
-    self.likes.find_or_create_by(post_id: user_post.id)
+  def favorite(post)
+    self.likes.find_or_create_by(post_id: post.id)
   end
   
-  def unfavorite(user_post)
-    like = self.likes.find_by(post_id: user_post.id)
+  def unfavorite(post)
+    like = self.likes.find_by(post_id: post.id)
     like.destroy if like
   end
   
-  def favorite?(user_post)
-    self.favorites.include?(user_post)
+  def favorite?(post)
+    self.favorites.include?(post)
   end
   
   def self.search(search)
