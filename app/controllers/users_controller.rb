@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @mypets = current_user.mypets.order(id: :desc).page(params[:id])
+    @mypets = @user.mypets.order(id: :desc).page(params[:id])
     counts(@user)
   end
 
