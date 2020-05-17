@@ -1,4 +1,4 @@
-<% if mypets.any? %>
+<% if mypets.present? %>
   <ul class="list-unstyled">
     <% mypets.each do |mypet| %>
       <li class="media mb-1" style="border:1px solid #fff000; border-radius:5px; padding:5px;">
