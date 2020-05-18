@@ -15,7 +15,7 @@ class User < ApplicationRecord
   
   has_many :posts
   
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :favorites, through: :likes, source: :post
   
   def follow(other_user)
