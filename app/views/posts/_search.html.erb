@@ -1,6 +1,5 @@
 <p>投稿検索</p>
 <%= form_tag root_path, :method => "get" do %>
-  <!--<%= text_field_tag :search %>-->
   <div class="form-gruop">
     <%= label :search_content, "コンテンツ" %>
     <%= text_field_tag :search_content %>
@@ -14,11 +13,6 @@
   <%= submit_tag "検索", :content => nil %>
   
 <% end %>
-
-<!--<%= form_tag root_path, :method => "get" do %>
-  <%= date_field_tag :search_created_at %>
-  <%= submit_tag "検索", :created_at => nil %>
-<% end %>-->
 
 <div class="mt-1">
   <button><%= link_to "一覧に戻る", root_path %></button>

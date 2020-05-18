@@ -8,4 +8,9 @@
   <tr>
     <td class="text-center"><a href="<%= followers_user_path(@user) %>">フォロワー<span class="badge badge-secondary"><%= @count_followers %></span></a></td>
   </tr>
+  <% if current_user == @user %>
+    <tr>
+      <td class="text-center"><a href="<%= root_path %>">投稿する</a></td>
+    </tr>
+  <% end %>
 </table>

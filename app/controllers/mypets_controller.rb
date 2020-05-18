@@ -18,7 +18,10 @@ class MypetsController < ApplicationController
   end
 
   def edit
-    @mypet = current_user.mypets.find_by(id: params[:id])
+    if current_user.mypets.present?
+      @mypet = current_user.mypets.find_by(id: params[:id])
+    else redirect_to user_path(current_user)
+    end
   end
 
   def update
